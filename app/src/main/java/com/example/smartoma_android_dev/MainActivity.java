@@ -8,8 +8,11 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -42,10 +45,28 @@ public class MainActivity extends AppCompatActivity {
                 R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow)
                 .setDrawerLayout(drawer)
                 .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        // Nav bar issue: https://issuetracker.google.com/issues/142847973?pli=1
+
+        NavController navController = getNavController();
+
+
+
+
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
     }
+
+    // workaround for https://issuetracker.google.com/issues/142847973
+    @NonNull
+    private NavController getNavController() {
+        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
+        if (!(fragment instanceof NavHostFragment)) {
+            throw new IllegalStateException("Activity " + this
+                    + " does not have a NavHostFragment");
+        }
+        return ((NavHostFragment) fragment).getNavController();
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
