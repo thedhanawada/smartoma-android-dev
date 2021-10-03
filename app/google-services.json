@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "398937616245",
+    "project_id": "smartoma-dev",
+    "storage_bucket": "smartoma-dev.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:398937616245:android:8bf668ee7e992067d5ed3c",
+        "android_client_info": {
+          "package_name": "com.example.smartoma_android_dev"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "398937616245-vmi76ad5jhlglhbfh698dub7mc88iimg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDCfy1OWC8RD7_Ffe6Zj4gzq3PiWE76hdc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "398937616245-vmi76ad5jhlglhbfh698dub7mc88iimg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
